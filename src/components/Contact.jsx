@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
+
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +17,32 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(() => {
+        alert("✅ Thank you! Your message has been sent.");
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        console.error("Form submission error:", error);
+        alert("❌ Oops! Something went wrong.");
+      });
+  };
+
   return (
     <section id="contact" className="py-5">
       <Container>
@@ -27,11 +55,11 @@ const Contact = () => {
           name="contact" 
           method="POST" 
           data-netlify="true"
-          netlify-honeypot="bot-field"
+          data-netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
         >
-          {/* Hidden input for Netlify */}
+          {/* Netlify hidden fields */}
           <input type="hidden" name="form-name" value="contact" />
-          {/* Anti-bot hidden field */}
           <input type="hidden" name="bot-field" />
 
           <Row className="mb-3">
