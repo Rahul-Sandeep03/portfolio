@@ -8,13 +8,13 @@
   <body>
     <div id="root"></div>
 
-    <!-- Netlify needs this dummy hidden form for form detection at build time -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="text" name="subject" />
-      <textarea name="message"></textarea>
-    </form>
+ <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <input type="text" name="subject" />
+  <textarea name="message"></textarea>
+</form>
+
 
     <!-- Load your React app -->
     <script type="module" src="/src/main.jsx"></script>
