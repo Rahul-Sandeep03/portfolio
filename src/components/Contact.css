@@ -1,0 +1,46 @@
+.contact-heading {
+  position: relative;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.background-text {
+  font-size: 5rem;
+  color: rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+  white-space: nowrap;
+}
+
+.foreground-text {
+  position: relative;
+  z-index: 1;
+  color: #00d4b4;
+  font-weight: 700;
+}
+
+.contact-form .form-control {
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  padding: 12px 20px;
+}
+
+.contact-form textarea.form-control {
+  border-radius: 25px;
+  padding: 20px;
+  resize: none;
+}
+
+.btn-outline-success {
+  border-color: #00d4b4;
+  color: #00d4b4;
+  font-weight: 500;
+}
+
+.btn-outline-success:hover {
+  background-color: #00d4b4;
+  color: #fff;
+}

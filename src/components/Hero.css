@@ -1,0 +1,52 @@
+/* Space below fixed navbar */
+.hero-section {
+  padding-top: 90px; /* adjust if your navbar height is more */
+  min-height: 100vh;
+  background-color: #17c3b2;
+  flex-direction: column;
+}
+
+.hero-img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border: 8px solid #fff;
+  border-radius: 50%; /* Makes it a perfect circle */
+}
+
+
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  font-weight: 900;
+}
+
+.typed-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.typed-cursor {
+  font-weight: 400;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+.modal-content {
+  background-color: #000;
+  border: none;
+}
+
+video {
+  border-radius: 0;
+}
+

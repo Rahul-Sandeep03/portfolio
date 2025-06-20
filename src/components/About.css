@@ -1,0 +1,70 @@
+/* src/components/About.css */
+.about-section {
+  background-color: #fff;
+  padding: 60px 0;
+}
+
+.section-title {
+  position: relative;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.text-background {
+  font-size: 80px;
+          font-weight: 900;
+          color: rgba(0, 0, 0, 0.05);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          margin: 0;
+}
+
+.text-foreground {
+  color: #00d4b4;
+  position: relative;
+  z-index: 1;
+  text-transform: uppercase;
+}
+
+.about-section p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.profile-img {
+  width: 220px;
+  height: auto;
+  object-fit: cover;
+  border: 2px solid #00d4b4;
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+.btn-outline-success {
+  border-color: #00d4b4;
+  color: #00d4b4;
+}
+
+.btn-outline-success:hover {
+  background-color: #00d4b4;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .text-background {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .profile-img {
+    width: 150px;
+  }
+}
