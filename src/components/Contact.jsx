@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import Swal from 'sweetalert2';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +14,53 @@ const Contact = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const data = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString(),
+    })
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Message Sent!',
+          text: 'Thank you! Redirecting...',
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+          background: '#fff',
+          color: '#343a40',
+        });
+
+        setTimeout(() => {
+          window.location.href = '/thank-you.html';
+        }, 2000);
+
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      })
+      .catch((error) => {
+        console.error('Form submission error:', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          text: 'Something went wrong. Please try again.',
+          showConfirmButton: true,
+          background: '#fff',
+          color: '#343a40',
+        });
+      });
   };
 
   return (
@@ -28,10 +76,9 @@ const Contact = () => {
           method="POST"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/thank-you.html"
+          onSubmit={handleSubmit}
           className="contact-form"
         >
-          {/* Netlify hidden inputs */}
           <input type="hidden" name="form-name" value="contact" />
           <input type="hidden" name="bot-field" />
 
